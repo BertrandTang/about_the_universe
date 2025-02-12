@@ -7,6 +7,7 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
+  overflow: hidden;
 }
 
 .container-fluid {
@@ -121,7 +122,7 @@ main {
   width: 100%;
 }
 
-#planet_display {
+#planet_detail {
   display: flex;
   align-content: start;
   gap: 2rem;
@@ -135,6 +136,41 @@ main {
 
 td {
   text-align: right;
+}
+
+.planets_table tbody tr:hover {
+  cursor: pointer;
+}
+
+.stats_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 1rem;
+}
+
+.stats_item {
+  display: flex;
+  gap: 1rem;
+}
+
+.stats_item img {
+  height: 64px;
+}
+
+.button_container {
+  display: flex;
+  justify-content: end;
+}
+
+.notvisible {
+  display: none;
+}
+
+.select_message {
+  padding: 2rem;
+  text-align: center;
 }
 
 /*# sourceMappingURL=planets.css.map */

@@ -55,7 +55,7 @@
             </nav>
             <main>
                 <div id="planets_table_card" class="card border-primary">
-                    <div class="card_detail">
+                    <div class="planet_table_detail card_detail">
                         <h1>Planètes</h1>
                         <div class="card-body">
                             <select class="filter form-select">
@@ -73,19 +73,54 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="table-primary">
-                                        <th scope="row">Eriadu</th>
-                                        <td>Cityscape</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                         <p class="number_results"></p>
                     </div>
                 </div>
-                <div id="planet_display" class="card border-primary">
-                    <div class="card_detail">
-                        contenu à afficher
+                <div id="planet_detail" class="card border-primary">
+                    <h1 class="select_message">Veuillez sélectionner une planète pour l'afficher</h1>
+                    <div class="notvisible planet_detail_card card_detail"">
+                        <h1 class="planet_name"></h1>
+                        <p class="population_info"></p>
+                        <div class="stats_list">
+                            <ul class="stats_left">
+                                <li class="stats_item">
+                                    <img src="../img/diameter.png" alt="diameter logo">
+                                    <div class="stats_details diameter">
+                                        <h2>Diamètre</h2>
+                                        <p class="diameter_info"></p>
+                                    </div>
+                                </li>
+                                <li class="stats_item">
+                                    <img src="../img/climate.png" alt="climate logo">
+                                    <div class="stats_details climate">
+                                        <h2>Climat</h2>
+                                        <p class="climate_info"></p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="stats_right">
+                                <li class="stats_item">
+                                    <img src="../img/gravity.png" alt="gravity logo">
+                                    <div class="stats_details gravity">
+                                        <h2>Gravité</h2>
+                                        <p class="gravity_info"></p>
+                                    </div>
+                                </li>
+                                <li class="stats_item">
+                                    <img src="../img/terrain.png" alt="terrain logo">
+                                    <div class="stats_details terrain">
+                                        <h2>Terrain</h2>
+                                        <p class="terrain_info"></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="button_container">
+                        <button type="button" class="btn btn-primary">En savoir plus</button>
+                        </div>
                     </div>
                 </div>
             </main>
