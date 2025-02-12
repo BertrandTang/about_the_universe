@@ -9,7 +9,6 @@ initialisation();
 async function initialisation() {
     for (let index = 0; index < entityArray.length; index++) {
         getEntityCount(entityArray[index]);
-        console.log(entityArray[index]);
     }
 }
 

@@ -1,7 +1,6 @@
 const planetsTableTbody = document.querySelector(".planets_table tbody");
 const resultsNumber = document.querySelector('.number_results')
-
-const url = "https://swapi.dev/api/planets/";
+const url  = "https://swapi.dev/api/planets/";
 let nextUrl = url;
 
 initialisation(); 
@@ -11,16 +10,16 @@ async function initialisation() {
 }
 
 async function getAllPlanets () {
-    while (nextUrl){
-        const queryOtherPages = await fetch(nextUrl);
-        const otherPagesJson = await queryOtherPages.json();
-        resultsNumber.innerHTML = otherPagesJson.count + " Résultat(s)";
-        const otherDataPlanets = otherPagesJson.results;
-        addNewTableCells(otherDataPlanets);
-        nextUrl = otherPagesJson.next ? otherPagesJson.next : null;
+    while (nextUrl) {
+        const queryResponse = await fetch(nextUrl);
+        const responseJson = await queryResponse.json();
+        resultsNumber.innerHTML = responseJson.count + " Résultat(s)";
+        const planetsData = responseJson.results;
+        addPlanetsToPlanetTable(planetsData);
+        nextUrl = responseJson.next ? responseJson.next : null;
     }   
 }
-function addNewTableCells(dataArray) {
+function addPlanetsToPlanetTable(dataArray) {
     for (let index = 0; index < dataArray.length; index++) {
         const newRow = document.createElement('tr');
         newRow.classList.add('table-primary');
@@ -34,10 +33,7 @@ function addNewTableCells(dataArray) {
         planetsTableTbody.appendChild(newRow);
 
         newRow.addEventListener("click", () => {
-            const selectMessage = document.querySelector(".select_message");
-            selectMessage.classList.add("notvisible");
-            const planetCardDetail = document.querySelector(".planet_detail_card");
-            planetCardDetail.classList.remove("notvisible");
+            makeVisiblePlanetDetailDisplay();
             const planetNamePlaceholder = document.querySelector(".planet_name");
             planetNamePlaceholder.innerHTML = dataArray[index].name;
             const populationPlaceholder = document.querySelector(".population_info");
@@ -52,4 +48,11 @@ function addNewTableCells(dataArray) {
             terrainPlaceholder.innerHTML = dataArray[index].terrain;
         });
     }
+}
+
+function makeVisiblePlanetDetailDisplay() {
+    const selectMessage = document.querySelector(".select_message");
+    selectMessage.classList.add("notvisible");
+    const planetCardDetail = document.querySelector(".planet_detail_card");
+    planetCardDetail.classList.remove("notvisible");
 }

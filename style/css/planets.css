@@ -90,7 +90,6 @@ main {
 .card-body {
   display: flex;
   flex-direction: column;
-  align-items: left;
   align-content: center;
   justify-content: center;
   width: 100%;
