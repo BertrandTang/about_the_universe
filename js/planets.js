@@ -43,7 +43,7 @@ function addNewTableCells(dataArray) {
             const populationPlaceholder = document.querySelector(".population_info");
             populationPlaceholder.innerHTML = "Population : " + dataArray[index].population;
             const diameterPlaceholder = document.querySelector(".diameter_info");
-            diameterPlaceholder.innerHTML = dataArray[index].diameter;
+            diameterPlaceholder.innerHTML = dataArray[index].diameter + " km";
             const climatePlaceholder = document.querySelector(".climate_info");
             climatePlaceholder.innerHTML = dataArray[index].climate;
             const gravityPlaceholder = document.querySelector(".gravity_info");
