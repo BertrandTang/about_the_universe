@@ -1,0 +1,134 @@
+$mypink: #e64e7d;
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.container-fluid {
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    gap: 5rem;
+}
+
+.navbar a {
+    font-size: 2rem;
+    margin: 0rem 1rem;
+}
+
+.sidebar {
+    display: flex;
+    width: auto;
+    justify-content: center;
+}
+
+#logo {
+    height: 5rem;
+    margin: 0rem 1rem;
+}
+
+.nav-item img {
+    height: 64px;
+}
+
+.nav-item {
+    margin: 1rem 0rem;
+}
+
+.nav-item a {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: center;
+    gap: auto;
+    width: auto;
+}
+
+main .card{
+    margin: 3rem;
+    width: 80%;
+}
+
+#presentation_card {
+    height: 45%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../img/space.jpg') ;
+    background-size: cover;
+    background-position: bottom;
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+#stats_card {    
+    height: 80%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../img/space_mission.jpg') ;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+span {
+    color: $mypink;
+}
+
+h1 {
+    font-size: 1rem;
+}
+
+#stats_card{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 10rem;
+}
+
+.statistics_list {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.statistics_list li {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 0rem 1rem;
+}
+.statistics_list img {
+    height: 70px;
+}
+
+.statistics_list p {
+    font-size: 1rem;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/css/reset.css">
+    <link rel="stylesheet" href="style/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/css/index.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <title>About the Universe</title>
+</head>
+
+<body>
+    <div class="container-fluid h-100">
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <img src="img/logo.png" alt="" id="logo">
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Next missions</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row h-100">
+            <nav class="col-md-3 col-lg-2 d-md-block bg-primary sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="html/planets.html">
+                                <img src="img/planets.png" alt="planets">
+                                <p>Planets</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <img src="img/vehicles.png" alt="vehicles">
+                                <p>Vehicles</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <img src="img/individuals.png" alt="individuals">
+                                <p>Individuals</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main>
+                <div id="presentation_card" class="card border-primary">
+                    <div class="card-header">Présentation</div>
+                    <div class="card-body">
+                        <h4 class="card-title">About the Universe</h4>
+                        <p class="card-text">Bienvenue sur <span>ABOUT THE UNIVERSE</span> pour découvrir toutes nos
+                            découvertes à propos du monde qui nous entoure !</p>
+                    </div>
+                </div>
+                <div id="stats_card" class="card border-primary">
+                    <div class="card_detail">
+                        <div class="card-header">Statistiques</div>
+                        <div class="card-body">
+                            <h4 class="card-title">Les Chiffres</h4>
+                            <p class="card-text">Nous nous efforçons d'archiver nos trouvailles pour vous les partager
+                                autant que possible !</p>
+                        </div>
+                    </div>
+                    <ul class="statistics_list">
+                        <li class="lifeform statistic">
+                            <img src="img/number_lifeforms.png" alt="lifeforms logo">
+                            <div class="stats_details">
+                                <h1>Nombre d'êtres vivants recensés</h1>
+                                <p class="lifeforms_number"></p>
+                            </div>
+                        </li>
+                        <li class="vehicule statistic">
+                            <img src="img/number_vehicles.png" alt="vehicles logo">
+                            <div class="stats_details">
+                                <h1>Nombre de véhicules recensés</h1>
+                                <p class="vehicles_number"></p>
+                            </div>
+                        </li>
+                        <li class="planet statistic">
+                            <img src="img/number_planets.png" alt="planets logo">
+                            <div class="stats_details">
+                                <h1>Nombre de planètes recensés</h1>
+                                <p class="planets_number"></p>
+                            </div>
+                        </li>
+                        <li class="mission statistic">
+                            <img src="img/next_missions.png" alt="missions logo">
+                            <div class="stats_details">
+                                <h1>Prochaine mission</h1>
+                                <p class="mission_date">May 4th 2025</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
