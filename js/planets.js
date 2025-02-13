@@ -1,3 +1,7 @@
+import { fetchData } from './api.js';
+import { getEntityCount } from './api.js';
+import { sortEntityAscending } from './api.js';
+
 document.addEventListener("DOMContentLoaded", function () {
     initialisation();
 });
@@ -5,36 +9,32 @@ document.addEventListener("DOMContentLoaded", function () {
 const planetsTableTbody = document.querySelector(".planets_table tbody");
 const resultsNumber = document.querySelector(".number_results");
 const filterSelect = document.querySelector(".filter");
+const searchBar = document.querySelector(".searchbar");
+
 let url = "https://swapi.dev/api/planets/";
 let planets = [];
 
 async function initialisation() {
     await getAllPlanets();
-    addPlanetsToPlanetTable(sortPopulationAscending(planets));
-    getPlanetsCount(planets);
+    addPlanetsToPlanetTable(sortEntityAscending(planets,  "population"));
+    getEntityCount(planets, resultsNumber);
 }
 async function getAllPlanets() {
     while (url !== null) {
-        const queryResponse = await fetch(url);
-        const responseJson = await queryResponse.json();
-        planets = planets.concat(responseJson.results);
-        planetsCount = responseJson.count;
-        url = responseJson.next ? responseJson.next : null;
+        const response = await fetchData(url);
+        planets = planets.concat(response.results);
+        url = response.next ? response.next : null;
     }
 }
-
-function getPlanetsCount(array) {
-    resultsNumber.innerHTML = array.length + " Résultat(s)";
-}
-
 function addPlanetsToPlanetTable(dataArray) {
+    planetsTableTbody.innerHTML = "";
     for (let index = 0; index < dataArray.length; index++) {
         const newRow = document.createElement("tr");
         newRow.classList.add("table-primary");
         const newHeader = document.createElement("th");
-        newHeader.textContent = dataArray[index].name;
         newHeader.setAttribute("scope", "row");
         const newCell = document.createElement("td");
+        newHeader.textContent = dataArray[index].name;
         newCell.textContent = dataArray[index].terrain;
         newRow.appendChild(newHeader);
         newRow.appendChild(newCell);
@@ -58,7 +58,6 @@ function addPlanetsToPlanetTable(dataArray) {
         });
     }
 }
-
 function makeVisiblePlanetDetailDisplay() {
     const selectMessage = document.querySelector(".select_message");
     selectMessage.classList.add("notvisible");
@@ -68,43 +67,39 @@ function makeVisiblePlanetDetailDisplay() {
 
 filterSelect.addEventListener("change", (event) => {
     let filterValue = event.target.value;
-    console.log(filterValue);
+    let planetsFiltered = [];
     switch (filterValue) {
         case "1":
-            planetsTableTbody.innerHTML = "";
-            const planetsFiltered1 = planets.filter(planet => {
+            planetsFiltered = planets.filter(planet => {
                 const inhabitants = parseInt(planet.population);
                 return inhabitants <= 100000;
             })
-            addPlanetsToPlanetTable(sortPopulationAscending(planetsFiltered1));
-            getPlanetsCount(planetsFiltered1)
             break;
         case "2":
-            planetsTableTbody.innerHTML = "";
-            const planetsFiltered2 = planets.filter(planet => {
+            planetsFiltered = planets.filter(planet => {
                 const inhabitants = parseInt(planet.population);
                 return 100000 <= inhabitants && inhabitants <= 100000000;
             })
-            addPlanetsToPlanetTable(sortPopulationAscending(planetsFiltered2));
-            getPlanetsCount(planetsFiltered2)
             break;
         case "3":
-            planetsTableTbody.innerHTML = "";
-            const planetsFiltered3 = planets.filter(planet => {
+            planetsFiltered = planets.filter(planet => {
                 const inhabitants = parseInt(planet.population);
                 return inhabitants > 100000000;
             })
-            addPlanetsToPlanetTable(sortPopulationAscending(planetsFiltered3));
-            getPlanetsCount(planetsFiltered3)
             break;
         default: "0";
-            planetsTableTbody.innerHTML = "";
-            addPlanetsToPlanetTable(sortPopulationAscending(planets));
-            getPlanetsCount(planets)
             break;
     }
+    addPlanetsToPlanetTable(sortEntityAscending(planetsFiltered, "population"));
+    getEntityCount(planetsFiltered, resultsNumber)
 });
-
-function sortPopulationAscending(Array) {
-    return Array.sort((a, b) => a.population - b.population);
-}
+searchBar.addEventListener('input', (event) => {
+    const inputEntered = event.target.value.toLowerCase();
+    console.log(inputEntered);
+    const searchedPlanet = planets.filter(planet =>
+        planet.name.toLowerCase().startsWith(inputEntered)
+    );
+    const filteredInput = searchedPlanet.sort();
+    addPlanetsToPlanetTable(filteredInput);
+    getEntityCount(filteredInput, resultsNumber)
+});
