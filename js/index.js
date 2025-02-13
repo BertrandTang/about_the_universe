@@ -2,7 +2,6 @@ const lifeformsNumberPlaceholder = document.querySelector(".lifeforms_number");
 const vehiclesNumberPlaceholder = document.querySelector(".vehicles_number");
 const planetsNumberPlaceholder = document.querySelector(".planets_number");
 const entityArray = ["species", "vehicles", "planets"];
-const missionDatePlaceholder = document.querySelector(".mission_date");
 
 initialisation();
 

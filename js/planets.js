@@ -1,24 +1,31 @@
 const planetsTableTbody = document.querySelector(".planets_table tbody");
 const resultsNumber = document.querySelector('.number_results')
-const url  = "https://swapi.dev/api/planets/";
-let nextUrl = url;
+let url  = "https://swapi.dev/api/planets/";
+let planets = [];
+let planetsCount = 0;
 
 initialisation(); 
 
 async function initialisation() {
-    getAllPlanets();
+    await getAllPlanets();
+    addPlanetsToPlanetTable(planets);
+    getPlanetsCount(planetsCount);
 }
 
 async function getAllPlanets () {
-    while (nextUrl) {
-        const queryResponse = await fetch(nextUrl);
+    while (url !== null) {
+        const queryResponse = await fetch(url);
         const responseJson = await queryResponse.json();
-        resultsNumber.innerHTML = responseJson.count + " Résultat(s)";
-        const planetsData = responseJson.results;
-        addPlanetsToPlanetTable(planetsData);
-        nextUrl = responseJson.next ? responseJson.next : null;
-    }   
+        planets = planets.concat(responseJson.results);
+        planetsCount = responseJson.count;
+        url = responseJson.next ? responseJson.next : null;
+    } 
 }
+
+function getPlanetsCount(count) {
+    resultsNumber.innerHTML = count + " Résultat(s)";
+}
+
 function addPlanetsToPlanetTable(dataArray) {
     for (let index = 0; index < dataArray.length; index++) {
         const newRow = document.createElement('tr');
